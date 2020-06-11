@@ -211,6 +211,25 @@ var ApiCalendar = function () {
             });
         }
         /**
+         * Update Calendar event
+         * @param {string} calendarId for the event.
+         * @param {string} eventId of the event.
+         * @param {object} event with start and end dateTime
+         * @returns {any}
+         */
+
+    }, {
+        key: 'updateEvent',
+        value: function updateEvent(event, eventId) {
+            var calendarId = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.calendar;
+
+            return this.gapi.client.calendar.events.patch({
+                'calendarId': calendarId,
+                'eventId': eventId,
+                'resource': event
+            });
+        }
+        /**
          * Create Calendar event
          * @param {string} calendarId for the event.
          * @param {object} event with start and end dateTime

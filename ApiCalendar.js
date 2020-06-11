@@ -163,6 +163,20 @@ class ApiCalendar {
         });
     }
     /**
+     * Update Calendar event
+     * @param {string} calendarId for the event.
+     * @param {string} eventId of the event.
+     * @param {object} event with start and end dateTime
+     * @returns {any}
+     */
+    updateEvent(event, eventId, calendarId = this.calendar) {
+        return this.gapi.client.calendar.events.patch({
+            'calendarId': calendarId,
+            'eventId': eventId,
+            'resource': event,
+        });
+    }
+    /**
      * Create Calendar event
      * @param {string} calendarId for the event.
      * @param {object} event with start and end dateTime

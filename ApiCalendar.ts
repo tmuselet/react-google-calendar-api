@@ -151,7 +151,7 @@ class ApiCalendar {
      * @param {string} calendarId
      * @returns {any}
      */
-    public createEventFromNow({time, summary, description = ''}: any, calendarId: string = this.calendar): any {
+    public createEventFromNow({ time, summary, description = '' }: any, calendarId: string = this.calendar): any {
         const event = {
             summary,
             description,
@@ -167,6 +167,21 @@ class ApiCalendar {
 
         return this.gapi.client.calendar.events.insert({
             'calendarId': calendarId,
+            'resource': event,
+        });
+    }
+
+    /** 
+     * Update Calendar event
+     * @param {string} calendarId for the event.
+     * @param {string} eventId of the event.
+     * @param {object} event with start and end dateTime
+     * @returns {any}
+     */
+    public updateEvent(event: object, eventId: string, calendarId: string = this.calendar): any {
+        return this.gapi.client.calendar.events.patch({
+            'calendarId': calendarId,
+            'eventId': eventId,
             'resource': event,
         });
     }
