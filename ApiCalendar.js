@@ -16,6 +16,7 @@ class ApiCalendar {
             this.listenSign = this.listenSign.bind(this);
             this.onLoad = this.onLoad.bind(this);
             this.setCalendar = this.setCalendar.bind(this);
+            this.updateEvent = this.updateEvent.bind(this);
             this.handleClientLoad();
         }
         catch (e) {
